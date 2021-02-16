@@ -1,2 +1,2 @@
 # algorithmsPY
-learning python algorithms
+learning python algorithms and data structures
