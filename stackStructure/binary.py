@@ -10,8 +10,6 @@ def convert_int_to_bin(num):
     
     number = 0
     
-    print(stack.get_stack())
-    
     for i in range(len(stack.get_stack())):
         number += stack.get_stack()[i] * 10 ** i
     
