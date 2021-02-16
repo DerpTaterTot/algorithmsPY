@@ -1,6 +1,3 @@
-from typing import Counter
-
-
 class Node(): # node -> data with a starting and ending point
     def __init__(self, data) -> None:
         self.data = data
