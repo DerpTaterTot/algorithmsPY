@@ -18,4 +18,3 @@ class Stack():
     
     def is_empty(self):
         return not self.items
-    
