@@ -191,20 +191,31 @@ class linkedList(): # linked list -> a bunch of nodes linked together
         
         return self.head
 
-llist_1 = linkedList()
-llist_2 = linkedList()
+    def removeDuplicates(self):
+        cur = self.head
+        prev = None
+        dupes = []
+        
+        while cur:
+            if cur.data in dupes:
+                prev.next = cur.next
+                cur = None
+            else:
+                dupes.append(cur.data)
+                prev = cur
+            cur = prev.next
+            
+llist = linkedList()
+llist.append(1)
+llist.append(6)
+llist.append(1)
+llist.append(4)
+llist.append(2)
+llist.append(2)
+llist.append(4)
 
-llist_1.append(1)
-llist_1.append(5)
-llist_1.append(7)
-llist_1.append(9)
-llist_1.append(10)
-
-llist_2.append(2)
-llist_2.append(3)
-llist_2.append(4)
-llist_2.append(6)
-llist_2.append(8)
-
-llist_1.mergeSorted(llist_2)
-llist_1.print_list()
+print("Original Linked List")
+llist.print_list()
+print("Linked List After Removing Duplicates")
+llist.removeDuplicates()
+llist.print_list()
