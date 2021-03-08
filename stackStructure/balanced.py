@@ -29,3 +29,4 @@ def balanced(string):
     return isBalanced and stack.is_empty()
 
 
+print(balanced("[][][][][][]"))
