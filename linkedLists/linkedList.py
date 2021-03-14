@@ -1,3 +1,6 @@
+from typing import Counter
+
+
 class Node(): # node -> data with a starting and ending point
     def __init__(self, data) -> None:
         self.data = data
@@ -243,11 +246,32 @@ class linkedList(): # linked list -> a bunch of nodes linked together
         else:
             return None
 
+    def countIterative(self, data):
+        count = 0
+        current = self.head
+        
+        while current:
+            if current.data == data:
+                count += 1
+            
+            current = current.next
+        
+        return count
+        
+    def countRecursive(self, node, data):
+        if not node:
+            return 0
+        
+        if node.data == data:
+            return 1 + self.countRecursive(node.next, data)
+        else:
+            return 0 + self.countRecursive(node.next, data)
+        
 llist = linkedList()
-llist.append("A")
-llist.append("B")
 llist.append("C")
-llist.append("D")
+llist.append("A")
+llist.append("C")
+llist.append("C")
 
-print(llist.nFromLast1(4))
-print(llist.nFromlast2(4))
+llist.print_list()
+print(llist.countRecursive(llist.head, "C"))
