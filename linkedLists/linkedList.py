@@ -266,12 +266,39 @@ class linkedList(): # linked list -> a bunch of nodes linked together
             return 1 + self.countRecursive(node.next, data)
         else:
             return 0 + self.countRecursive(node.next, data)
+    
+    def rotate(self, piv):
+        p = self.head
+        q = self.head
+        prev = None
+        count = 0
         
+        while p and count < piv:
+            prev = p
+            p = p.next
+            q = q.next
+            count += 1
+        
+        p = prev
+        
+        while q:
+            prev = q
+            q = q.next
+            
+        q = prev
+        
+        q.next = self.head
+        self.head = p.next
+        p.next = None
+        
+    
 llist = linkedList()
 llist.append("C")
 llist.append("A")
-llist.append("C")
+llist.append("B")
 llist.append("C")
 
 llist.print_list()
-print(llist.countRecursive(llist.head, "C"))
+llist.rotate(3)
+print("--------------------------------")
+llist.print_list()
