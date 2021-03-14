@@ -204,18 +204,50 @@ class linkedList(): # linked list -> a bunch of nodes linked together
                 dupes.append(cur.data)
                 prev = cur
             cur = prev.next
-            
-llist = linkedList()
-llist.append(1)
-llist.append(6)
-llist.append(1)
-llist.append(4)
-llist.append(2)
-llist.append(2)
-llist.append(4)
+   
+    def nFromLast1(self, n):
+        length = self.len_iterative()
+        
+        cur = self.head
+        while cur:
+            if length == n:
+                return cur.data
+            length -= 1
+            cur = cur.next
+        
+        if cur is None:
+            print(str(n), "is greater than the number of nodes in this list")
+            return 
+        
+    def nFromlast2(self, n):
+        p = self.head
+        q = self.head
+        
+        if n > 0:
+            count = 0
+            while q:
+                count += 1
+                
+                if count >= n:
+                    break
+                q = q.next
+                
+            if not q:
+                print(str(n), "is greater than the number of nodes in this list")
+                return
 
-print("Original Linked List")
-llist.print_list()
-print("Linked List After Removing Duplicates")
-llist.removeDuplicates()
-llist.print_list()
+            while p and q.next:
+                p = p.next
+                q = q.next
+            return p.data
+        else:
+            return None
+
+llist = linkedList()
+llist.append("A")
+llist.append("B")
+llist.append("C")
+llist.append("D")
+
+print(llist.nFromLast1(4))
+print(llist.nFromlast2(4))
