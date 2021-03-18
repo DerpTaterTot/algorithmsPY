@@ -356,14 +356,47 @@ class linkedList(): # linked list -> a bunch of nodes linked together
             last.next = self.head
             secondtolast.next = None
             self.head = last
-        
-llist = linkedList()
-llist.append("C")
-llist.append("A")
-llist.append("A")
-llist.append("D")
+    
 
-llist.print_list()
-llist.moveTailToHead()
-print("----------------------------------")
-llist.print_list()
+    def sum_two_lists(self, llist):
+        p = self.head  
+        q = llist.head
+
+        sum_llist = linkedList()
+
+        carry = 0
+        while p or q:
+            if not p:
+                i = 0
+            else:
+                i = p.data
+            if not q:
+                j = 0 
+            else:
+                j = q.data
+            s = i + j + carry
+            if s >= 10:
+                carry = 1
+                remainder = s % 10
+                sum_llist.append(remainder)
+            else:
+                carry = 0
+                sum_llist.append(s)
+            if p:
+                p = p.next
+            if q:
+                q = q.next
+        return sum_llist.print_list()
+    
+llist1 = linkedList()
+llist1.append(5)
+llist1.append(6)
+llist1.append(3)
+
+llist2 = linkedList()
+llist2.append(8)
+llist2.append(4)
+llist2.append(2)
+
+print(365 + 248)
+llist1.sum_two_lists(llist2)
