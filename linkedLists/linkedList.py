@@ -291,14 +291,64 @@ class linkedList(): # linked list -> a bunch of nodes linked together
         self.head = p.next
         p.next = None
         
+    def isPalindrome1(self):
+        string = ""
+        p = self.head
+        while p:
+            string += p.data
+            p = p.next
+        
+        return string == string[::-1]
+
+    def isPalindrome2(self):
+        p = self.head
+        s = []
+        
+        while p:
+            s.append(p.data)
+            p = p.next
+
+        p = self.head
+        
+        while p:
+            data = s.pop()
+            if p.data != data:
+                return False
+            p = p.next
+        return True
     
+    def isPalindrome3(self):
+        if self.head:
+            p = self.head
+            q = self.head
+            prev = []
+            
+            i = 0
+            
+            while q:
+                prev.append(q)
+                q = q.next
+                i += 1
+            
+            q = prev[i - 1]
+            
+            count = 1
+            
+            while count <= i // 2 + 1:
+                if prev[-count].data != p.data:
+                    return False
+
+                p = p.next
+                count += 1
+            return True
+        else:
+            return True
+        
 llist = linkedList()
 llist.append("C")
 llist.append("A")
-llist.append("B")
+llist.append("A")
 llist.append("C")
 
 llist.print_list()
-llist.rotate(3)
-print("--------------------------------")
-llist.print_list()
+print(llist.isPalindrome3())
