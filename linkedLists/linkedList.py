@@ -343,12 +343,27 @@ class linkedList(): # linked list -> a bunch of nodes linked together
             return True
         else:
             return True
+    
+    def moveTailToHead(self):
+        if self.head and self.head.next:
+            last = self.head
+            secondtolast = None
+            
+            while last.next:
+                secondtolast = last
+                last = last.next
+            
+            last.next = self.head
+            secondtolast.next = None
+            self.head = last
         
 llist = linkedList()
 llist.append("C")
 llist.append("A")
 llist.append("A")
-llist.append("C")
+llist.append("D")
 
 llist.print_list()
-print(llist.isPalindrome3())
+llist.moveTailToHead()
+print("----------------------------------")
+llist.print_list()
